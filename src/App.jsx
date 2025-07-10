@@ -10,7 +10,6 @@ import "flexmonster/lib/flexmonster.highcharts.js";
 function App() {
     const pivotRef = useRef(null);
     const [showOriginalPivot, setShowOriginalPivot] = useState(true);
-    const [artistGenresMap, setArtistGenresMap] = useState({});
 
     useEffect(() => {
         fetch("/spotify-top-200-dataset.csv")
@@ -30,7 +29,6 @@ function App() {
                         map[artist] = genres.split(",")[0].trim();
                     }
                 }
-                setArtistGenresMap(map);
             })
             .catch((err) => {
                 console.error("Failed to load CSV for genres map", err);
@@ -183,36 +181,7 @@ function App() {
         }
     }, [showOriginalPivot]);
 
-    useEffect(() => {
-        if (!showOriginalPivot && pivotRef.current?.flexmonster) {
-            const pivot = pivotRef.current.flexmonster;
 
-            pivot.off("cellprepare");
-
-            pivot.on("cellprepare", function (cell) {
-                if (
-                    cell.type === "rowHeader" &&
-                    cell.hierarchy &&
-                    cell.hierarchy.length === 1
-                ) {
-                    const artistName = cell.label;
-                    const genre = artistGenresMap[artistName] || "";
-
-                    if (cell.element && !cell.element.querySelector(".genre-label")) {
-                        const genreSpan = document.createElement("span");
-                        genreSpan.textContent = genre ? ` | ${genre} |` : "";
-                        genreSpan.className = "genre-label";
-                        genreSpan.style.color = "#1DB954";
-                        genreSpan.style.fontWeight = "700";
-                        genreSpan.style.marginLeft = "6px";
-                        cell.element.appendChild(genreSpan);
-                    }
-                }
-            });
-
-            pivot.refresh();
-        }
-    }, [showOriginalPivot, artistGenresMap]);
 
     function customizeToolbar(toolbar) {
         const tabs = toolbar.getTabs();

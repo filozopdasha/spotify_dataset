@@ -1,12 +1,30 @@
-# React + Vite
+# Spotify Insights
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hi!
+I’m a Software Engineering student and beginner developer.
+Right now, I’m exploring data visualization and learning new tools for it.
 
-Currently, two official plugins are available:
+This is a small but useful one-page data analytics app built with:
+- React
+- Flexmonster Pivot Table
+- Highcharts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Functionality
 
-## Expanding the ESLint configuration
+This project provides a simple and interactive way to explore Spotify’s Top 200 dataset using two data visualization tools: pivot tables and charts.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Two Pivot Table Views
+- 	Tracks View:
+Displays track-level insights with artist names, track titles, and total stream counts.
+-	Albums View:
+Shows a breakdown by album and release year, including total streams and top artists.
+
+Users can easily switch between these two views via a custom toolbar tab in the pivot table.
+
+### Highcharts Integration
+-	A column chart visualizes the most streamed artists based on the dataset.
+
+# Result:
+
+![App Demo](./demo.gif)
+
